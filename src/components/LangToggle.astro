@@ -1,0 +1,28 @@
+<div class="lang" role="group" aria-label="Language">
+  <button type="button" data-lang="en" aria-pressed="true">EN</button>
+  <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.lang button');
+  const nodes = document.querySelectorAll<HTMLElement>('[data-en]');
+
+  function apply(lang: string) {
+    document.documentElement.lang = lang;
+    nodes.forEach((el) => {
+      const html = el.getAttribute('data-' + lang);
+      if (html != null) el.innerHTML = html;
+    });
+    buttons.forEach((b) =>
+      b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false')
+    );
+    try { localStorage.setItem('tegmora-lang', lang); } catch (e) {}
+  }
+
+  let saved: string | null = null;
+  try { saved = localStorage.getItem('tegmora-lang'); } catch (e) {}
+  if (!saved) saved = (navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+  apply(saved);
+
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.lang!)));
+</script>

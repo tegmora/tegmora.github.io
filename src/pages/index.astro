@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Tile from '../components/Tile.astro';
+import LangToggle from '../components/LangToggle.astro';
+import { ui } from '../i18n/ui';
+---
+<Base>
+  <LangToggle />
+
+  <main class="page">
+    <header class="head">
+      <Tile size={96} />
+      <h1>tegmora<span class="period">.</span></h1>
+    </header>
+
+    <p class="intro" data-en={ui.intro1.en} data-tr={ui.intro1.tr} set:html={ui.intro1.en} />
+    <p class="intro" data-en={ui.intro2.en} data-tr={ui.intro2.tr} set:html={ui.intro2.en} />
+    <p class="intro" data-en={ui.intro3.en} data-tr={ui.intro3.tr} set:html={ui.intro3.en} />
+
+    <section class="sec">
+      <div class="sec-head">
+        <h2 data-en={ui.contactHeading.en} data-tr={ui.contactHeading.tr}>{ui.contactHeading.en}</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="contact-line" data-en={ui.contactLine.en} data-tr={ui.contactLine.tr} set:html={ui.contactLine.en} />
+      <p class="contact-sub">hello@tegmora.com &nbsp;·&nbsp; Ankara, Türkiye</p>
+    </section>
+
+    <footer class="foot"><span>© 2026 tegmora</span></footer>
+  </main>
+</Base>

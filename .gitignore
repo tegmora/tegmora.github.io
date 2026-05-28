@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+npm-debug.log*
+
+# Claude Code / agent state
+.claude/
+CLAUDE.local.md
+
+# Editor cruft
+.vscode/
+.idea/
+*.log

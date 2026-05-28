@@ -1,0 +1,93 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --bg:        oklch(0.185 0.008 60);
+  --bg-raised: oklch(0.235 0.010 60);
+  --bg-tile:   oklch(0.255 0.012 60);
+  --title:  oklch(0.96 0.006 60);
+  --body:   oklch(0.74 0.007 60);
+  --dim:    oklch(0.55 0.007 60);
+  --faint:  oklch(0.42 0.007 60);
+  --accent:      oklch(0.74 0.105 62);
+  --accent-soft: oklch(0.74 0.105 62 / 0.16);
+  --hair:      oklch(0.96 0.006 60 / 0.10);
+  --hair-soft: oklch(0.96 0.006 60 / 0.05);
+}
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01" on, "cv11" on;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.page { max-width: 620px; margin: 0 auto; padding: 132px 32px 0; position: relative; z-index: 1; }
+
+/* Periodic tile */
+.tile {
+  --s: 96px;
+  width: var(--s); height: calc(var(--s) * 1.12);
+  background: var(--bg-tile); border: 1px solid var(--hair);
+  border-radius: 14px; position: relative; display: block;
+  box-shadow: 0 1px 0 oklch(0.96 0.006 60 / 0.04) inset; overflow: hidden;
+}
+.tile .num { position: absolute; top: 9px; left: 11px; font-family: 'Geist Mono', monospace; font-size: calc(var(--s) * 0.115); font-weight: 500; letter-spacing: 0.02em; color: var(--dim); }
+.tile .cat { position: absolute; top: 11px; right: 11px; width: calc(var(--s) * 0.1); height: calc(var(--s) * 0.1); border-radius: 50%; background: var(--accent); opacity: 0.9; }
+.tile .sym { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -54%); font-family: 'Geist', sans-serif; font-weight: 700; font-size: calc(var(--s) * 0.48); letter-spacing: -0.04em; color: var(--title); line-height: 1; }
+.tile .lbl { position: absolute; bottom: 9px; left: 0; right: 0; text-align: center; font-family: 'Geist Mono', monospace; font-size: calc(var(--s) * 0.085); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+
+/* Header */
+.head { margin-bottom: 30px; }
+.head .tile { margin-bottom: 38px; }
+h1 { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 92px; line-height: 0.9; letter-spacing: -0.055em; margin: 0; color: var(--title); text-transform: lowercase; }
+h1 .period { color: var(--accent); }
+
+/* Intro */
+.intro { font-size: 19px; line-height: 1.62; color: var(--body); margin: 30px 0 0; max-width: 480px; }
+.intro + .intro { margin-top: 18px; }
+.intro strong { color: var(--title); font-weight: 500; }
+
+/* Section */
+.sec { margin-top: 88px; }
+.sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 34px; }
+.sec-head h2 { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--title); margin: 0; white-space: nowrap; }
+.sec-head .rule { flex: 1; height: 1px; background: var(--hair); }
+
+/* Contact */
+.contact-line { font-size: 19px; line-height: 1.6; color: var(--body); margin: 0; }
+.contact-sub { margin: 16px 0 0; font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--faint); }
+
+/* Footer */
+.foot { margin-top: 88px; padding-bottom: 96px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--faint); }
+
+/* Language toggle */
+.lang {
+  position: fixed; top: 24px; right: 24px; z-index: 20;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  background: var(--bg-tile); border: 1px solid var(--hair);
+  border-radius: 11px; padding: 3px;
+  box-shadow: 0 1px 0 oklch(0.96 0.006 60 / 0.04) inset, 0 6px 20px oklch(0 0 0 / 0.28);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.lang button {
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--dim); width: 40px; height: 34px; border-radius: 8px;
+  transition: color 160ms ease, background 160ms ease; -webkit-tap-highlight-color: transparent;
+}
+.lang button:hover { color: var(--body); }
+.lang button[aria-pressed="true"] { color: var(--bg); background: var(--accent); }
+
+@media (max-width: 560px) {
+  .page { padding-top: 88px; }
+  h1 { font-size: 64px; }
+  .head .tile { --s: 80px; }
+  .intro, .contact-line { font-size: 17px; }
+  .lang { top: 16px; right: 16px; }
+  .lang button { width: 38px; height: 38px; }
+}
