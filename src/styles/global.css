@@ -59,7 +59,6 @@ html, body {
   font-family: 'Geist', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01" on, "cv11" on;
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -73,8 +72,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .wm { display: inline-block; font-family: 'Geist', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.045em; color: var(--title); margin-bottom: 56px; }
 .wm .period { color: var(--accent); }
 .wm:hover { text-decoration: none; color: var(--title); }
-h1 { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 92px; line-height: 0.9; letter-spacing: -0.055em; margin: 0; color: var(--title); text-transform: lowercase; }
+h1 { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 92px; line-height: 0.9; letter-spacing: -0.055em; margin: 0; color: var(--title); }
 h1 .period { color: var(--accent); }
+.kern-g { margin-right: -0.022em; }
 
 /* Intro */
 .intro { font-size: 19px; line-height: 1.62; color: var(--body); margin: 30px 0 0; max-width: 480px; }
