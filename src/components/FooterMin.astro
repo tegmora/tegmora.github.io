@@ -1,0 +1,8 @@
+---
+const hasLinks = Astro.slots.has('default');
+---
+<footer class="foot foot-min">
+  <div class="foot-rule"></div>
+  {hasLinks && <div class="links"><slot /></div>}
+  <!-- <p class="foot-copy">© 2026</p> -->
+</footer>

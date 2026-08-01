@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import LangToggle from '../components/LangToggle.astro';
+import Wordmark from '../components/Wordmark.astro';
+import FooterMin from '../components/FooterMin.astro';
+---
+<Base title="support — tegmora" description="Support for tegmora apps.">
+  <LangToggle />
+
+  <main class="page legal">
+    <Wordmark />
+
+    <h1 class="legal-title" data-en="support" data-tr="destek">support</h1>
+    <p class="legal-meta" data-en="We read everything." data-tr="Her mesajı okuyoruz.">We read everything.</p>
+
+    <p data-en="Need help with anything we make? Email <a href='mailto:support@tegmora.com'>support@tegmora.com</a> and we&rsquo;ll get back to you, usually within two business days."
+       data-tr="Yaptığımız herhangi bir şeyle ilgili yardıma mı ihtiyacınız var? <a href='mailto:support@tegmora.com'>support@tegmora.com</a> adresine yazın; genellikle iki iş günü içinde dönüş yaparız.">Need help with anything we make? Email <a href="mailto:support@tegmora.com">support@tegmora.com</a> and we&rsquo;ll get back to you, usually within two business days.</p>
+
+    <h2 data-en="App help" data-tr="Uygulama yardımı">App help</h2>
+    <p data-en="For Excerpta — subscriptions, your account, exporting your words, reporting a bug — see the <a href='/apps/excerpta/support/'>Excerpta support page</a>."
+       data-tr="Excerpta ile ilgili konular için — abonelikler, hesabınız, kelimelerinizi dışa aktarma, hata bildirme — <a href='/apps/excerpta/support/'>Excerpta destek sayfasına</a> bakın.">For Excerpta — subscriptions, your account, exporting your words, reporting a bug — see the <a href="/apps/excerpta/support/">Excerpta support page</a>.</p>
+
+    <h2 data-en="Privacy requests" data-tr="Gizlilik talepleri">Privacy requests</h2>
+    <p data-en="For anything about your personal data — access, correction, deletion, export — see our <a href='/privacy/'>privacy policy</a>."
+       data-tr="Kişisel verilerinizle ilgili her konu için — erişim, düzeltme, silme, dışa aktarma — <a href='/privacy/'>gizlilik politikamıza</a> bakın.">For anything about your personal data — access, correction, deletion, export — see our <a href="/privacy/">privacy policy</a>.</p>
+
+    <FooterMin />
+  </main>
+</Base>

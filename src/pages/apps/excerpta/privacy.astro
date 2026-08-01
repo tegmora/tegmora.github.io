@@ -1,0 +1,69 @@
+---
+import Base from '../../../layouts/Base.astro';
+import LangToggle from '../../../components/LangToggle.astro';
+import Wordmark from '../../../components/Wordmark.astro';
+import FooterMin from '../../../components/FooterMin.astro';
+---
+<Base title="Excerpta — Privacy" description="Privacy policy for the Excerpta app." ogImage="/apps/excerpta/og.png">
+  <LangToggle />
+
+  <main class="page legal">
+    <Wordmark />
+
+    <h1 class="legal-title" data-en="privacy policy" data-tr="gizlilik politikası">privacy policy</h1>
+    <p class="legal-meta" data-en="Excerpta · Last updated: 1 August 2026" data-tr="Excerpta · Son güncelleme: 1 Ağustos 2026">Excerpta · Last updated: 1 August 2026</p>
+
+    <p data-en="This policy explains how Excerpta handles your data: what we collect, why, and the control you have over it. Who we are and the full list of your rights are in our <a href='/privacy/'>general privacy policy</a>; for anything about your personal data, write to <a href='mailto:privacy@tegmora.com'>privacy@tegmora.com</a>."
+       data-tr="Bu politika, Excerpta&rsquo;nın verilerinizi nasıl işlediğini anlatır: neleri neden topladığımızı ve bu veriler üzerindeki denetiminizi açıklar. Kim olduğumuz ve haklarınızın tam listesi <a href='/privacy/'>genel gizlilik politikamızda</a> yer alır; kişisel verilerinizle ilgili her konu için <a href='mailto:privacy@tegmora.com'>privacy@tegmora.com</a> adresine yazabilirsiniz.">This policy explains how Excerpta handles your data: what we collect, why, and the control you have over it. Who we are and the full list of your rights are in our <a href="/privacy/">general privacy policy</a>; for anything about your personal data, write to <a href="mailto:privacy@tegmora.com">privacy@tegmora.com</a>.</p>
+
+    <h2 data-en="What we collect" data-tr="Neleri topluyoruz">What we collect</h2>
+    <ul>
+      <li data-en="<strong>Account</strong> — the email and the username you choose when you sign up."
+          data-tr="<strong>Hesap</strong> — kaydolurken belirlediğiniz e-posta adresi ve kullanıcı adı."><strong>Account</strong> — the email and the username you choose when you sign up.</li>
+      <li data-en="<strong>Content you create</strong> — passages you paste or share into the app, and the vocabulary cards generated from them."
+          data-tr="<strong>Oluşturduğunuz içerik</strong> — uygulamaya yapıştırdığınız ya da paylaştığınız metinler ve bunlardan oluşturulan kelime kartları."><strong>Content you create</strong> — passages you paste or share into the app, and the vocabulary cards generated from them.</li>
+      <li data-en="<strong>Usage &amp; diagnostics</strong> — basic in-app activity and crash/error logs that keep the app working and help us fix problems."
+          data-tr="<strong>Kullanım ve tanılama</strong> — uygulamanın düzgün çalışmasını sağlayan ve sorunları gidermemize yardımcı olan temel kullanım kayıtları ile hata/çökme bilgileri."><strong>Usage &amp; diagnostics</strong> — basic in-app activity and crash/error logs that keep the app working and help us fix problems.</li>
+    </ul>
+    <p data-en="We do <strong>not</strong> collect your location or contacts, and we use no third-party advertising or cross-app tracking."
+       data-tr="Konumunuzu ya da rehberinizi <strong>toplamıyoruz</strong>; reklam veya uygulamalar arası takip de yapmıyoruz.">We do <strong>not</strong> collect your location or contacts, and we use no third-party advertising or cross-app tracking.</p>
+
+    <h2 data-en="How we use it" data-tr="Verileri nasıl kullanıyoruz">How we use it</h2>
+    <p data-en="Only to run the service — analyze passages, build and sync your vocabulary, and schedule spaced-repetition review — to process your subscription, and to fix bugs. That&rsquo;s all."
+       data-tr="Yalnızca hizmeti sunmak için: metinleri çözümlemek, kelimelerinizi oluşturup cihazlarınız arasında eşitlemek, aralıklı tekrar çalışmalarını planlamak, aboneliğinizi işlemek ve hataları gidermek için. Hepsi bu.">Only to run the service — analyze passages, build and sync your vocabulary, and schedule spaced-repetition review — to process your subscription, and to fix bugs. That&rsquo;s all.</p>
+
+    <h2 data-en="Legal bases" data-tr="Hukuki dayanaklar">Legal bases</h2>
+    <p data-en="We process your data under Article 6 of the GDPR and Article 5 of the KVKK on the following bases: <strong>performance of a contract</strong> (creating your account and providing the app&rsquo;s features), our <strong>legitimate interests</strong> (keeping the service secure and fixing bugs), your <strong>consent</strong> where we ask for it, and <strong>compliance with legal obligations</strong> where the law requires us to keep or disclose information."
+       data-tr="Verilerinizi GDPR&rsquo;ın 6. maddesi ile KVKK&rsquo;nın 5. maddesi uyarınca şu dayanaklarla işleriz: <strong>bir sözleşmenin ifası</strong> (hesabınızın oluşturulması ve uygulama özelliklerinin sunulması), <strong>meşru menfaatlerimiz</strong> (hizmetin güvenliğinin sağlanması ve hataların giderilmesi), talep ettiğimiz durumlarda <strong>açık rızanız</strong> ve yasaların bilgi saklamamızı ya da paylaşmamızı gerektirdiği hâllerde <strong>hukuki yükümlülüklere uyum</strong>.">We process your data under Article 6 of the GDPR and Article 5 of the KVKK on the following bases: <strong>performance of a contract</strong> (creating your account and providing the app&rsquo;s features), our <strong>legitimate interests</strong> (keeping the service secure and fixing bugs), your <strong>consent</strong> where we ask for it, and <strong>compliance with legal obligations</strong> where the law requires us to keep or disclose information.</p>
+
+    <h2 data-en="AI processing" data-tr="Yapay zekâ işleme">AI processing</h2>
+    <p data-en="When you analyze a passage, its text is sent to our AI provider (OpenAI) to generate the vocabulary cards, and the result is returned to you. Your content is never used to train AI models."
+       data-tr="Bir metni çözümlediğinizde, kelime kartlarını oluşturmak için metin yapay zekâ sağlayıcımıza (OpenAI) iletilir ve sonuç size geri döner. İçeriğiniz, yapay zekâ modellerinin eğitiminde asla kullanılmaz.">When you analyze a passage, its text is sent to our AI provider (OpenAI) to generate the vocabulary cards, and the result is returned to you. Your content is never used to train AI models.</p>
+
+    <h2 data-en="Where your data lives" data-tr="Verileriniz nerede saklanıyor">Where your data lives</h2>
+    <p data-en="Your account and content are stored with our backend provider (Supabase). Subscriptions and payments go through Apple — we never see your card details."
+       data-tr="Hesabınız ve içeriğiniz arka uç sağlayıcımız Supabase&rsquo;de saklanır. Abonelik ve ödemeler Apple üzerinden yürütülür; kart bilgilerinizi hiçbir zaman görmeyiz.">Your account and content are stored with our backend provider (Supabase). Subscriptions and payments go through Apple — we never see your card details.</p>
+
+    <h2 data-en="International transfers" data-tr="Yurt dışına veri aktarımı">International transfers</h2>
+    <p data-en="Our service providers (Supabase, OpenAI, Apple) may store or process data on servers located outside Türkiye and the European Economic Area, including in the United States. Where your data is transferred abroad, we rely on the safeguards provided for in Article 9 of the KVKK and Chapter V of the GDPR — such as the standard contractual clauses our providers offer — and, where the law requires it, your explicit consent."
+       data-tr="Hizmet sağlayıcılarımız (Supabase, OpenAI, Apple) verileri Türkiye ve Avrupa Ekonomik Alanı dışında, Amerika Birleşik Devletleri de dâhil olmak üzere, yurt dışındaki sunucularda saklayabilir veya işleyebilir. Verilerinizin yurt dışına aktarıldığı durumlarda, KVKK&rsquo;nın 9. maddesi ile GDPR&rsquo;ın V. Bölümünde öngörülen güvencelere — örneğin sağlayıcılarımızın sunduğu standart sözleşme hükümlerine — ve yasaların gerektirdiği hâllerde açık rızanıza dayanırız.">Our service providers (Supabase, OpenAI, Apple) may store or process data on servers located outside Türkiye and the European Economic Area, including in the United States. Where your data is transferred abroad, we rely on the safeguards provided for in Article 9 of the KVKK and Chapter V of the GDPR — such as the standard contractual clauses our providers offer — and, where the law requires it, your explicit consent.</p>
+
+    <h2 data-en="Keeping &amp; deleting your data" data-tr="Verilerin saklanması ve silinmesi">Keeping &amp; deleting your data</h2>
+    <p data-en="We keep your data for as long as your account exists. You can delete your account anytime in the app (Settings → Account), which removes your data from our systems. You can also export your saved words from Settings."
+       data-tr="Verilerinizi, hesabınız var olduğu sürece saklarız. Hesabınızı dilediğiniz an uygulamadan silebilirsiniz (Ayarlar → Hesap); bu işlem verilerinizi sistemlerimizden kaldırır. Kayıtlı kelimelerinizi de Ayarlar&rsquo;dan dışa aktarabilirsiniz.">We keep your data for as long as your account exists. You can delete your account anytime in the app (Settings → Account), which removes your data from our systems. You can also export your saved words from Settings.</p>
+
+    <h2 data-en="Your rights" data-tr="Haklarınız">Your rights</h2>
+    <p data-en="You can access, correct, export, or delete your data — most of it right in the app. The full list of your KVKK and GDPR rights, and how to exercise them, is in our <a href='/privacy/'>general privacy policy</a>."
+       data-tr="Verilerinize erişebilir; bunları düzeltebilir, dışa aktarabilir veya silebilirsiniz — çoğu işlem doğrudan uygulamanın içindedir. KVKK ve GDPR kapsamındaki haklarınızın tam listesi ile bunları nasıl kullanacağınız <a href='/privacy/'>genel gizlilik politikamızda</a> yer alır.">You can access, correct, export, or delete your data — most of it right in the app. The full list of your KVKK and GDPR rights, and how to exercise them, is in our <a href="/privacy/">general privacy policy</a>.</p>
+
+    <h2 data-en="Children" data-tr="Çocuklar">Children</h2>
+    <p data-en="Excerpta is not directed at children under 13. If you think a child has sent us data, contact us and we&rsquo;ll remove it."
+       data-tr="Excerpta, 13 yaşından küçük çocuklara yönelik değildir. Bir çocuğun bize veri gönderdiğini düşünüyorsanız bizimle iletişime geçin, ilgili veriyi kaldıralım.">Excerpta is not directed at children under 13. If you think a child has sent us data, contact us and we&rsquo;ll remove it.</p>
+
+    <h2 data-en="Changes" data-tr="Değişiklikler">Changes</h2>
+    <p data-en="We may update this policy as the app grows. We&rsquo;ll post any changes on this page and update the date above."
+       data-tr="Uygulama geliştikçe bu politikayı güncelleyebiliriz. Değişiklikleri bu sayfada yayımlar, yukarıdaki tarihi de güncelleriz.">We may update this policy as the app grows. We&rsquo;ll post any changes on this page and update the date above.</p>
+
+    <FooterMin />
+  </main>
+</Base>

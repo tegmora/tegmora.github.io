@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#232221"/>
+  <text x="29" y="32" dy="0.36em" text-anchor="middle"
+        font-family="Geist, system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="800" font-size="40" letter-spacing="-2" fill="#f4f2f1">t<tspan fill="#c66852">.</tspan></text>
+</svg>
