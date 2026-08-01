@@ -74,7 +74,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .wm:hover { text-decoration: none; color: var(--title); }
 h1 { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 92px; line-height: 0.9; letter-spacing: -0.055em; margin: 0; color: var(--title); }
 h1 .period { color: var(--accent); }
-.kern-g { margin-right: -0.022em; }
 
 /* Intro */
 .intro { font-size: 19px; line-height: 1.62; color: var(--body); margin: 30px 0 0; max-width: 480px; }
