@@ -82,8 +82,8 @@ import FooterMin from '../../../components/FooterMin.astro';
   // auth rules are the security boundary).
   (function () {
     var SUPABASE_URL = "https://fvorvezknptwcflghmos.supabase.co";
-    // S1 deploy step: replace with the project's anon (publishable) key.
-    var SUPABASE_ANON_KEY = "REPLACE-WITH-PRODUCTION-ANON-KEY";
+    // Publishable (anon) key — public by design; RLS/auth are the boundary.
+    var SUPABASE_ANON_KEY = "sb_publishable_IwyyB2GT8-Uhnr1xKBwSKA_1K-jcC1r";
 
     var states = {
       loading: document.getElementById("state-loading"),
