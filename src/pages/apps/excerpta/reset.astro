@@ -1,0 +1,193 @@
+---
+import Base from '../../../layouts/Base.astro';
+import LangToggle from '../../../components/LangToggle.astro';
+import Wordmark from '../../../components/Wordmark.astro';
+import FooterMin from '../../../components/FooterMin.astro';
+---
+<Base title="Excerpta — Reset password" description="Set a new password for your Excerpta account." ogImage="/apps/excerpta/og.png">
+  <LangToggle />
+
+  <main class="page legal">
+    <Wordmark />
+
+    <h1 class="legal-title" data-en="reset password" data-tr="şifre sıfırlama">reset password</h1>
+    <p class="legal-meta" data-en="Excerpta" data-tr="Excerpta">Excerpta</p>
+
+    <!-- Checking the link (default while the script parses the URL). -->
+    <section id="state-loading">
+      <p data-en="Checking your reset link…" data-tr="Sıfırlama bağlantınız denetleniyor…">Checking your reset link…</p>
+    </section>
+
+    <!-- The link was opened without a valid token (expired, reused, or typed by hand). -->
+    <section id="state-invalid" hidden>
+      <p data-en="This reset link is invalid or has expired — links work once and expire after an hour. Open the Excerpta app, tap <strong>Forgot password?</strong> on the log-in screen, and request a fresh one."
+         data-tr="Bu sıfırlama bağlantısı geçersiz ya da süresi dolmuş — bağlantılar tek kullanımlıktır ve bir saat içinde geçerliliğini yitirir. Excerpta uygulamasını açın, giriş ekranındaki <strong>Şifremi unuttum</strong> seçeneğine dokunun ve yeni bir bağlantı isteyin.">This reset link is invalid or has expired — links work once and expire after an hour. Open the Excerpta app, tap <strong>Forgot password?</strong> on the log-in screen, and request a fresh one.</p>
+    </section>
+
+    <!-- The working form. -->
+    <section id="state-form" hidden>
+      <p data-en="Choose a new password for your Excerpta account (at least 6 characters)."
+         data-tr="Excerpta hesabınız için yeni bir şifre belirleyin (en az 6 karakter).">Choose a new password for your Excerpta account (at least 6 characters).</p>
+
+      <form id="reset-form" class="reset-form" novalidate>
+        <label for="password" data-en="New password" data-tr="Yeni şifre">New password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" minlength="6" required />
+
+        <label for="confirm" data-en="Confirm new password" data-tr="Yeni şifre (tekrar)">Confirm new password</label>
+        <input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="6" required />
+
+        <p id="form-error" class="reset-error" hidden></p>
+
+        <button id="submit" type="submit" data-en="Set new password" data-tr="Şifreyi kaydet">Set new password</button>
+      </form>
+    </section>
+
+    <!-- Done. -->
+    <section id="state-success" hidden>
+      <p data-en="<strong>Your password has been updated.</strong> Open the Excerpta app and log in with your new password."
+         data-tr="<strong>Şifreniz güncellendi.</strong> Excerpta uygulamasını açın ve yeni şifrenizle giriş yapın.">
+        <strong>Your password has been updated.</strong> Open the Excerpta app and log in with your new password.</p>
+    </section>
+
+    <FooterMin />
+  </main>
+</Base>
+
+<style>
+  .reset-form { display: flex; flex-direction: column; gap: 0.5rem; max-width: 24rem; margin-top: 1rem; }
+  .reset-form label { font-size: 0.85rem; opacity: 0.75; margin-top: 0.5rem; }
+  .reset-form input {
+    font: inherit; padding: 0.6rem 0.75rem; border-radius: 8px;
+    border: 1px solid color-mix(in oklab, currentColor 25%, transparent);
+    background: color-mix(in oklab, currentColor 6%, transparent); color: inherit;
+  }
+  .reset-form button {
+    font: inherit; font-weight: 600; margin-top: 1rem; padding: 0.7rem 1rem;
+    border-radius: 8px; border: none; cursor: pointer;
+    background: currentColor;
+  }
+  .reset-form button span, .reset-form button { color: inherit; }
+  .reset-form button { background: color-mix(in oklab, currentColor 90%, transparent); color: canvas; }
+  .reset-form button:disabled { opacity: 0.5; cursor: default; }
+  .reset-error { color: #e5484d; font-size: 0.9rem; }
+</style>
+
+<script is:inline>
+  // Static-page password reset (S2, 2026-08-22). The whole flow is
+  // client-side: Supabase Auth verified the emailed token server-side and
+  // redirected here with a short-lived session in the URL fragment; this
+  // script exchanges it for a password update via one authenticated PUT.
+  // GitHub Pages only ever serves static files — no secrets live here (the
+  // anon key is the same public key shipped inside the iOS app; RLS and
+  // auth rules are the security boundary).
+  (function () {
+    var SUPABASE_URL = "https://fvorvezknptwcflghmos.supabase.co";
+    // S1 deploy step: replace with the project's anon (publishable) key.
+    var SUPABASE_ANON_KEY = "REPLACE-WITH-PRODUCTION-ANON-KEY";
+
+    var states = {
+      loading: document.getElementById("state-loading"),
+      invalid: document.getElementById("state-invalid"),
+      form: document.getElementById("state-form"),
+      success: document.getElementById("state-success"),
+    };
+
+    function show(name) {
+      Object.keys(states).forEach(function (key) {
+        states[key].hidden = key !== name;
+      });
+    }
+
+    function message(en, tr) {
+      return (document.documentElement.lang || "en") === "tr" ? tr : en;
+    }
+
+    // The recovery redirect carries the session in the URL fragment:
+    //   #access_token=…&refresh_token=…&type=recovery
+    // or an error:  #error=access_denied&error_code=otp_expired&…
+    var params = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+    var accessToken = params.get("access_token");
+    var isRecovery = params.get("type") === "recovery";
+
+    // Scrub the token from the address bar/history immediately.
+    if (window.location.hash) {
+      try { history.replaceState(null, "", window.location.pathname); } catch (e) {}
+    }
+
+    if (!accessToken || !isRecovery) {
+      show("invalid");
+      return;
+    }
+    if (SUPABASE_ANON_KEY.indexOf("REPLACE-WITH") === 0) {
+      // Pre-S1 misconfiguration: fail visibly, never mysteriously.
+      show("invalid");
+      return;
+    }
+
+    show("form");
+
+    var form = document.getElementById("reset-form");
+    var passwordInput = document.getElementById("password");
+    var confirmInput = document.getElementById("confirm");
+    var errorLine = document.getElementById("form-error");
+    var submitButton = document.getElementById("submit");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      errorLine.hidden = true;
+
+      var password = passwordInput.value;
+      if (password.length < 6) {
+        errorLine.textContent = message(
+          "Password must be at least 6 characters.",
+          "Şifre en az 6 karakter olmalı."
+        );
+        errorLine.hidden = false;
+        return;
+      }
+      if (password !== confirmInput.value) {
+        errorLine.textContent = message(
+          "The passwords don't match.",
+          "Şifreler birbiriyle uyuşmuyor."
+        );
+        errorLine.hidden = false;
+        return;
+      }
+
+      submitButton.disabled = true;
+
+      fetch(SUPABASE_URL + "/auth/v1/user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": "Bearer " + accessToken,
+        },
+        body: JSON.stringify({ password: password }),
+      })
+        .then(function (response) {
+          if (response.ok) {
+            show("success");
+            return;
+          }
+          return response.json().catch(function () { return {}; }).then(function (body) {
+            var detail = body && (body.msg || body.message || body.error_description);
+            errorLine.textContent = detail || message(
+              "Something went wrong. Request a fresh link from the app and try again.",
+              "Bir sorun oluştu. Uygulamadan yeni bir bağlantı isteyip tekrar deneyin."
+            );
+            errorLine.hidden = false;
+            submitButton.disabled = false;
+          });
+        })
+        .catch(function () {
+          errorLine.textContent = message(
+            "Network error. Check your connection and try again.",
+            "Ağ hatası. Bağlantınızı denetleyip tekrar deneyin."
+          );
+          errorLine.hidden = false;
+          submitButton.disabled = false;
+        });
+    });
+  })();
+</script>
